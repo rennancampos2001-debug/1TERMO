@@ -20,7 +20,10 @@ valores()
 # Nome: Indentifica a função para você chamá-la depois.
 # Parâmetros: Dados que a função recebe (opcional).
 # Return: Envia o resultado de volta para quem chamou a função (opcional).
-def calcular_dobro(numero):
-    return numero * 2
+def calcular_dobro():
+    numero_usuario = float(input("Digite o numero"))
+
+    return numero_usuario * 2
 # Como usar:resultado = calcular_dobro(5)
-print(calcular_dobro(5))    
+print(calcular_dobro())  
+

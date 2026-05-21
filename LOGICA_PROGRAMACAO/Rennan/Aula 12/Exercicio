@@ -1,0 +1,70 @@
+# Exercicio: Crie uma interface grafica que calcule a media de tres notas digitadas pelo usuario.
+# A interface deve conter campos para o usuario inserir as notas e um botao para calcular a média.
+# Ao clicar no botao, a media deve ser exibida em uma mensagem.
+
+import tkinter as tk
+from tkinter import messagebox
+
+janela = tk.Tk()
+janela.title("Calcular media")
+janela.geometry("800x500")
+
+def calcular_media():
+
+        nota1 = float(campo_nota1.get())
+        nota2 = float(campo_nota2.get())
+        nota3 = float(campo_nota3.get())
+
+        media = (nota1 + nota2 + nota3) / 3
+
+        if media == 0:
+            messagebox.showwarning("Aviso!", "Por favor coloque os seus numeros")
+        else:
+            messagebox.showinfo("Resultado",f"A media das notas foi de: {media}")
+
+lbl_title = tk.Label(
+    janela,
+    text=("Quais são as notas ? "),
+    font= ("Monocraft", 14, "bold")
+)
+
+campo_nota1 = tk.Entry(
+    janela, 
+    font=("Monocraft", 14, "bold")
+    )
+    
+campo_nota2 = tk.Entry(
+    janela, 
+    font=("Monocraft", 14, "bold")
+    )
+
+campo_nota3 = tk.Entry(
+    janela, 
+    font=("Monocraft", 14, "bold")
+    )
+
+
+btn_calculo = tk.Button(
+    janela,
+    text=("Calcule suas medias"),
+    font= ("Monocraft", 12, ),
+    bg= "#2ecc71",
+    command=calcular_media
+)
+
+btn_close = tk.Button(
+    janela, 
+    text="Sair do calculo", 
+    font=("Monocraft", 12, "bold"), 
+    bg="#cc2e2e", 
+    command=janela.destroy
+    )
+
+lbl_title.pack(pady=25)
+campo_nota1.pack(pady=10)
+campo_nota2.pack(pady=10)
+campo_nota3.pack(pady=10)
+btn_calculo.pack(pady=5)
+btn_close.pack(pady=1)
+
+janela.mainloop()
