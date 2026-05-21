@@ -14,4 +14,6 @@ if entrada == "Sim":
         print(f"{nome},  Solicitamos o uso obrigatorio de EPI seguidamente ditas: luvas de alta tensão, botas dielétricas, Uniforme ATPV, Óculos de Segurança e Capacete de Segurança.")
     elif setor == "Trabalho em Altura":
         print(f"{nome}, Solicitamos o uso obrigatorio de EPI seguidamente ditas: o cinturão de segurança, talabarte, Capacete, e a retirada de todas as partes metalicas de exposição ou que sejam isoladas. ")
+
+int(input("Qual foi o ano que você fez o seu treinamento? "))
     
