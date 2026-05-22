@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 
+lista_funcionarios = []
 usuarios_cadastrado = 0
 total_em_dia = 0
 
@@ -11,22 +12,42 @@ janela.geometry("1920x1080")
 def cadastro():
     global usuarios_cadastrado, total_em_dia
 
-    nome = guarda_nome.get()
-    setor = qual_setor.get()
-    nr10 = tem_nr10.get()
-    nr35 = tem_nr35.get()
-    brigada = tem_brigada.get()
+    nome_txt = nome.get()
+    setor_txt = setor.get()
+    nr10_txt = nr10.get()
+    nr35_txt = nr35.get()
+    brigada_txt = brigada.get()
 
     try:
-        treino = int(ano_treino.get())
+        treino = int(treino.get())
     except ValueError:
         messagebox.showerror("Erro", "Digite apenas numero de ano")
+        return
+    
+    funcionario = {
+        "nome": nome_txt,
+        "setor": setor_txt,
+        "nr10": nr10_txt,
+        "nr35": nr35_txt,
+        "brigada": brigada_txt, 
+        "treino": treino_txt
+    }
 
-    usuarios_cadastrado += 1
+    lista_funcionarios.append(funcionario)
 
+    usuarios_cadastrado = len(lista_funcionarios)
+
+    nome.delete(0,tk.END)
+    setor.delete(0,tk.END)
+    nr10.delete(0,tk.END)
+    nr35.delete(0,tk.END)
+    brigada.delete(0,tk.END)
+    treino.delete(0,tk.END)
+
+    messagebox.showinfo("Sucesso", f"Funcionario {nome_txt} cadastrado com sucesso! ")
 
 def relatorio():
-    messagebox.showinfo("Cadastros totais", f"Usuarios cadastrados: {usuarios_cadastrado}")
+    messagebox.showinfo("Cadastros totais", f"Usuarios cadastrados: {len (usuarios_cadastrado)}")
 
 
 lbl_titulo = tk.Label(janela,text=("Dados do funcionario"),font=("Monocraft", 16, "bold"))
@@ -56,10 +77,10 @@ lbl_treino = tk.Label(janela, text=("Em que ano você fez o treinamento?"), font
 treino = tk.Entry(janela,font=("Monocraft", 14))
 
 
-btn_cadastre = tk.Button(janela,text=("Cadastrar"),font=("Monocraft", 12))
+btn_cadastre = tk.Button(janela,text=("Cadastrar"),font=("Monocraft", 12), command=cadastro)
 
 
-btn_relatorio = tk.Button(janela,text=("Ver relatorio final"),font=("Monocraft", 12))
+btn_relatorio = tk.Button(janela,text=("Ver relatorio final"),font=("Monocraft", 12), command=relatorio)
 
 
 lbl_titulo.pack(pady=25)
@@ -76,6 +97,6 @@ brigada.pack(pady=1)
 lbl_treino.pack(pady=10)
 treino.pack(pady=1)
 btn_cadastre.pack(pady=10)
-btn_cadastre.pack(pady=5)
+btn_relatorio.pack(pady=5)
 
 janela.mainloop()
