@@ -368,7 +368,7 @@ from tkinter import messagebox, ttk, simpledialog
 # from tkinter import simpledialog, messagebox
 
 # janela = Tk()
-# janela.withdraw()  # Esconde a janela principal
+# janela.withdraw()  
 
 # maior = float("-inf")
 
